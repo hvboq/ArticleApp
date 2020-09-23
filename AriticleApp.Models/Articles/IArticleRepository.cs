@@ -9,12 +9,13 @@ namespace AriticleApp.Models
     /// </summary>
     public interface IArticleRepository
     {
-        Task<Article> AddArticleAsync(Article article); //입력
+        Task<Article> AddArticleAsync(Article model); //입력
         Task<List<Article>> GetArticlesAsync(); //출력
         Task<Article> GetArticleByIdAsync(int id); //상세
-        Task<Article> EditArticleAsynce(Article article); //수정
-        Task DeleteArticleAsync(int i); //삭제
+        Task<Article> EditArticleAsync(Article model); //수정
+        Task DeleteArticleAsync(int id); //삭제
 
-        Task<PagingResult<Article>> GetAllAsync(int pageIndex, int pageSize);
+        Task<PagingResult<Article>> GetAllAsync(int pageIndex,
+            int pageSize);
     }
 }

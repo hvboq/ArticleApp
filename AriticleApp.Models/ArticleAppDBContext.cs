@@ -10,7 +10,7 @@ namespace AriticleApp.Models
             //empty
         }
         public ArticleAppDBContext(DbContextOptions<ArticleAppDBContext> options)
-            :base(options)
+            : base(options)
         {
             // 공식과 같은 코드
         }
