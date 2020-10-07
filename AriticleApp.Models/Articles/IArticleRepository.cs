@@ -14,7 +14,6 @@ namespace AriticleApp.Models
         Task<Article> GetArticleByIdAsync(int id); //상세
         Task<Article> EditArticleAsync(Article model); //수정
         Task DeleteArticleAsync(int id); //삭제
-
         Task<PagingResult<Article>> GetAllAsync(int pageIndex,
             int pageSize);
     }
