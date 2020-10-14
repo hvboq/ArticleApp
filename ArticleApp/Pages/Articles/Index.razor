@@ -1,8 +1,49 @@
 ﻿@page "/Articles"
 @page "/Articles/Index"
 
+@using ArticleApp.Models 
+@using ArticleApp.Data
+
+@inject IArticleRepository ArticleRepository
+
 <h3>Index</h3>
 
-@code {
+<div>
+    <a href="/Articles/Create" class="btn btn-primary" style="margin-bottom : 10px">글쓰기</a>
+</div>
 
+@if (articles == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var article in articles)
+            {
+                <tr onclick="">
+                    <td>@article.Id</td>
+                    <td>@article.Title</td>
+                    <td>@article.Created.ToShortTimeString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Article> articles;
+
+    protected override async Task OnInitializedAsync()
+    {
+        articles = await ArticleRepository.GetArticlesAsync();
+    }
 }

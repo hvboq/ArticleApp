@@ -8,8 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ArticleApp.Areas.Identity;
 using ArticleApp.Data;
-using AriticleApp.Models;
-using Microsoft.Extensions.Options;
+using ArticleApp.Models;
 
 namespace ArticleApp
 {

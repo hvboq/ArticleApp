@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 
-namespace AriticleApp.Models
+namespace ArticleApp.Models
 {
     public class ArticleAppDBContext : DbContext
     {

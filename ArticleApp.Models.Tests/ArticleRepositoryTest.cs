@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
-namespace AriticleApp.Models.Tests
+namespace ArticleApp.Models.Tests
 {
     [TestClass]
     public class ArticleRepositoryTest
@@ -15,7 +15,8 @@ namespace AriticleApp.Models.Tests
         {
             //obj Creation
             var options = new DbContextOptionsBuilder<ArticleAppDBContext>()
-                .UseInMemoryDatabase(databaseName: "ArticleApp").Options;
+                //.UseInMemoryDatabase(databaseName: "ArticleApp").Options;
+                .UseSqlServer("server=(localdb)\\mssqllocaldb;database=ArticleApp;integrated security=true;").Options;
             //Add Method
             using (var context = new ArticleAppDBContext(options))
             {
@@ -55,6 +56,8 @@ namespace AriticleApp.Models.Tests
                 });
                 await context.SaveChangesAsync();
             }
+
+            // GetByIdAsync() Method Test
             using (var context = new ArticleAppDBContext(options))
             {
                 var repository = new ArticleRepository(context);

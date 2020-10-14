@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AriticleApp.Models
+namespace ArticleApp.Models
 {
     /// <summary>
     /// ArticleRepository Interface

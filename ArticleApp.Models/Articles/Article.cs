@@ -1,7 +1,7 @@
 ﻿using Dul.Domain.Common;
 using System.ComponentModel.DataAnnotations;
 
-namespace AriticleApp.Models
+namespace ArticleApp.Models
 {
 
     /// <summary>

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AriticleApp.Models
+namespace ArticleApp.Models
 {
     /// <summary>
     /// Repository Class : ADO.NET 또는 Dapper 또는 Entitty Framework core
