@@ -1,8 +1,48 @@
 ﻿@page "/Articles/Details/{Id:int}"
 
+@inject IArticleRepository ArticleRepository
+
 <h3>Details</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="id">Id: </label> @Model.Id
+            </div>
+            <div class="form-group">
+                <label for="id">Title: </label> @Model.Title
+            </div>
+            <div class="form-group">
+                <a href="/Articles/Edit/@Model.Id" class="btn btn-secondary">Edit</a>
+                <a href="/Articles/Delete/@Model.Id" class="btn btn-danger">Delete</a>
+                <a href="/Articles" class="btn btn-secondary">List</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 @code {
     [Parameter]
     public int Id { get; set; }
+
+    public Article Model { get; set; } = new Article();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Model = await ArticleRepository.GetArticleByIdAsync(Id);
+    }
+
+    /// <summary>
+    /// 밑에는 Create의 코드.
+    /// </summary>
+
+    //protected async Task btnSubMit_Click()
+    //{
+    //    //저장로직 구현
+    //    await ArticleRepository.AddArticleAsync(Model);
+
+    //    // 리스트 페이지로 이동
+    //    NavigationManager.NavigateTo("/Articles");
+    //}
 }

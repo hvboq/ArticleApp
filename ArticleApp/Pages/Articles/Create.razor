@@ -14,7 +14,7 @@
                 <div class="form-group">
                     <label for="Title">제목</label>
                     <InputText id="Title" class="form-control" placeholder="Enter Title" @bind-Value="@Model.Title"></InputText>
-                    <ValidationMessage For="@(()=>Model.Title)" class="form-text text-muted"></ValidationMessage>
+                    <ValidationMessage For="@(() => Model.Title)" class="form-text text-muted"></ValidationMessage>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <a href="/Articles" class="btn btn-secondary">List</a>
