@@ -2,9 +2,49 @@
 
 <h3>ArticlePager</h3>
 
-<input type="button" value="1페이지" @onclick="@(() => PagerButtonClicked(1))" />
-<input type="button" value="2페이지" @onclick="@(() => PagerButtonClicked(2))" />
-<input type="button" value="3페이지" @onclick="@(() => PagerButtonClicked(3))" />
+<div class="d-flex">
+
+    <ul class="pagination pagination-sm mx-auto">
+        @*처음 링크*@
+        @if (Model.PageNumber == 1)
+        {
+            <li class="page-item">
+                <a class="page-link first btn disabled"><span style="font-size: 7pt;">FIRST</span></a>
+            </li>
+        }
+        else
+        {
+            <li class="page-item">
+                <a class="page-link first btn" @onclick="@(() => PagerButtonClicked(1))"><span style="font-size: 7pt;">FIRST</span></a>
+            </li>
+        }
+
+        <li>
+            <input type="button" value="1페이지" @onclick="@(() => PagerButtonClicked(1))" />
+        </li>
+        <li>
+            <input type="button" value="2페이지" @onclick="@(() => PagerButtonClicked(2))" />
+        </li>
+        <li>
+            <input type="button" value="3페이지" @onclick="@(() => PagerButtonClicked(3))" />
+        </li>
+
+        @*마지막 링크*@
+        @if (Model.PageNumber != Model.PageCount)
+        {
+            <li class="page-item">
+                <a class="page-link first btn" @onclick="@(() => PagerButtonClicked(Model.PageCount))"><span style="font-size: 7pt;">Last</span></a>
+            </li>
+        }
+        else
+        {
+            <li class="page-item">
+                <a class="page-link first btn disabled" ><span style="font-size: 7pt;">Last</span></a>
+            </li>
+        }
+    </ul>
+</div>
+
 
 @code {
     // 부모로부터 모든 페이저 관련된 정보가 담김 PagerBase 객체 받음
