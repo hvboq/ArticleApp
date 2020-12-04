@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ArticleApp.Models.Users;
+using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 
 namespace ArticleApp.Models
@@ -31,5 +32,6 @@ namespace ArticleApp.Models
         }
 
         public DbSet<Article> Articles { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

@@ -15,13 +15,20 @@
                 <label for="id">Title: </label> @Model.Title
             </div>
             <div class="form-group">
-                <label for="id">Content: </label>
                 <hr />
+                <label for="id">Content</label>
+                <hr />
+
                 @Model.Content
             </div>
             <div class="form-group">
-                <a href="/Articles/Edit/@Model.Id" class="btn btn-secondary">Edit</a>
-                <a href="/Articles/Delete/@Model.Id" class="btn btn-danger">Delete</a>
+                <AuthorizeView>
+                    <Authorized>
+                        <a href="/Articles/Edit/@Model.Id" class="btn btn-secondary">Edit</a>
+                        <a href="/Articles/Delete/@Model.Id" class="btn btn-danger">Delete</a>
+                    </Authorized>
+                </AuthorizeView>
+
                 <a href="/Articles" class="btn btn-primary">List</a>
             </div>
         </div>

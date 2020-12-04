@@ -26,15 +26,15 @@ namespace ArticleApp.Models
         }
 
         // 출력
-        public async Task<List<Article>> GetArticlesAsync()
+        public async Task<List<Article>> GetAllArticlesAsync()
         {
             return await _context.Articles.OrderByDescending(m => m.Id).ToListAsync();
         }
         //상세 출력
         public async Task<Article> GetArticleByIdAsync(int id)
         {
-            //return await _context.Articles.FindAsync(id);
-            return await _context.Articles.Where(m => m.Id == id).SingleOrDefaultAsync();
+            return await _context.Articles.FindAsync(id);
+            //return await _context.Articles.Where(m => m.Id == id).SingleOrDefaultAsync();
         }
         // 수정        
         public async Task<Article> EditArticleAsync(Article model)

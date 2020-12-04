@@ -60,9 +60,9 @@
     <Folder Include="dbo\Tables" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\Articles.sql" />
+    <None Include="ArticleApp.SqlServer.publish.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ArticleApp.SqlServer.publish.xml" />
+    <Build Include="dbo\Tables\Users.sql" />
   </ItemGroup>
 </Project>
