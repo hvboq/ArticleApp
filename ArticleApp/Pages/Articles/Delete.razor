@@ -2,7 +2,9 @@
 
 @inject IArticleRepository ArticleRepository
 @inject NavigationManager NavigationManager
-@inject IJSRuntime JSRuntime 
+@inject IJSRuntime JSRuntime
+
+@attribute [Authorize]
 
 <h3>Delete</h3>
 <hr />
