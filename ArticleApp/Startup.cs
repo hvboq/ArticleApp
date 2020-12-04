@@ -9,6 +9,8 @@ using Microsoft.Extensions.Hosting;
 using ArticleApp.Areas.Identity;
 using ArticleApp.Data;
 using ArticleApp.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System;
 
 namespace ArticleApp
 {
@@ -25,15 +27,24 @@ namespace ArticleApp
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews();
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            // 쿠키 인증 사용
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie();
+
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddSingleton<WeatherForecastService>();
+
             AddDependencyInjectionContainerForArticles(services);
         }
         
@@ -76,6 +87,7 @@ namespace ArticleApp
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapDefaultControllerRoute();
                 endpoints.MapControllers();
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
