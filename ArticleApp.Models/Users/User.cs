@@ -16,5 +16,6 @@ namespace ArticleApp.Models.Users
         /// </summary>
         [Required(ErrorMessage = "비밀번호를 입력해주세요.")]
         public string Password { get; set; }
+        public string Role { get; set; }
     }
 }

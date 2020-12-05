@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ArticleApp.Models.Users;
+using Microsoft.JSInterop;
 
 namespace ArticleApp.Controllers
 {
@@ -26,7 +27,7 @@ namespace ArticleApp.Controllers
             {
                 return LocalRedirect(Url.Content("~/"));
             }
-            
+
             User user = new User()
             {
                 Email = email,

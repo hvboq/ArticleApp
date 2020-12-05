@@ -2,6 +2,7 @@
 @page "/Articles/Index"
 
 @using ArticleApp.Models
+@using System.Security.Claims;
 
 @inject IArticleRepository ArticleRepository
 
@@ -74,6 +75,8 @@ else
 
     private List<Article> articles;
 
+    private string userRole;
+
     protected override async Task OnInitializedAsync()
     {
         //[1] 전체 데이터 모두 출력
@@ -83,6 +86,8 @@ else
         PagingResult<Article> pagingData = await ArticleRepository.GetAllAsync(pager.PageIndex, pager.PageSize);
         pager.RecordCount = pagingData.TotalRecords; // 총 레코드 수
         articles = pagingData.Records.ToList(); //페이징 처리된 레코드
+
+        var authState = await AuthenticationStateRef;
     }
 
     private async void PageIndexChanged(int pageIndex)
@@ -96,4 +101,6 @@ else
 
         StateHasChanged(); // 현재 컴포넌트 재로드
     }
+    [CascadingParameter]
+    public Task<AuthenticationState> AuthenticationStateRef { get; set; }
 }

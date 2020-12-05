@@ -7,6 +7,7 @@
 	[Created] DateTime default(GetDate()), -- 생성일
 	[ModifiedBy] NVarChar(255) Null, -- 수정자
 	[Modified] DateTime null, -- 수정일
+	[Role] NVarChar(255) Null
 )
 GO
  

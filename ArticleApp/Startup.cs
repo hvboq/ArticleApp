@@ -12,6 +12,7 @@ using ArticleApp.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System;
 using ArticleApp.Models.Users;
+using ArticleApp.Models.VotedUsers;
 
 namespace ArticleApp
 {
@@ -62,6 +63,7 @@ namespace ArticleApp
             // IArticleRepository.cs Inject: Di Container에 서비스(리포지토리) 등록
             services.AddTransient<IArticleRepository, ArticleRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IVotedUserRepository, VotedUserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

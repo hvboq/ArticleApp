@@ -1,4 +1,5 @@
 ﻿using ArticleApp.Models.Users;
+using ArticleApp.Models.VotedUsers;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 
@@ -30,9 +31,11 @@ namespace ArticleApp.Models
         {
             modelBuilder.Entity<Article>().Property(m => m.Created).HasDefaultValueSql("GetDate()");
             modelBuilder.Entity<User>().Property(m => m.Created).HasDefaultValueSql("GetDate()");
+            modelBuilder.Entity<VotedUser>().Property(m => m.Created).HasDefaultValueSql("GetDate()");
         }
 
         public DbSet<Article> Articles { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<VotedUser> VotedUsers { get; set; }
     }
 }

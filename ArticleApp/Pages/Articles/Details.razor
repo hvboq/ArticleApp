@@ -1,6 +1,9 @@
 ﻿@page "/Articles/Details/{Id:int}"
 
 @inject IArticleRepository ArticleRepository
+@inject IVotedUserRepository VotedUserRepository
+@inject AuthenticationState _authenticationState
+
 
 <h3>Details</h3>
 <hr />
@@ -22,6 +25,12 @@
                 @Model.Content
             </div>
             <div class="form-group">
+                <label for="id">Topic: </label> @Model.Topic
+            </div>
+            <div class="form-group">
+                <label for="id">Value: </label> @Model.Value
+            </div>
+            <div class="form-group">
                 <AuthorizeView>
                     <Authorized>
                         <a href="/Articles/Edit/@Model.Id" class="btn btn-secondary">Edit</a>
@@ -30,6 +39,16 @@
                 </AuthorizeView>
 
                 <a href="/Articles" class="btn btn-primary">List</a>
+            </div>
+            <div>
+                <AuthorizeView>
+                    <Authorized>
+                        <button class="btn btn-primary" @onclick="submitClick">
+
+                        </button>
+                    </Authorized>
+                </AuthorizeView>
+
             </div>
         </div>
     </div>
@@ -40,10 +59,16 @@
     public int Id { get; set; }
 
     public Article Model { get; set; } = new Article();
+    protected string userName { get; set; };
 
     protected override async Task OnInitializedAsync()
     {
         Model = await ArticleRepository.GetArticleByIdAsync(Id);
+        var authState = await
+    }
+    private void submitClick(MouseEventArgs e)
+    {
+
     }
 
     /// <summary>

@@ -26,5 +26,8 @@ namespace ArticleApp.Models
         /// </summary>
         [Required(ErrorMessage ="내용을 입력하세요.")]
         public string Content { get; set; }
+
+        public string Topic { get; set; }
+        public string Value { get; set; }
     }
 }

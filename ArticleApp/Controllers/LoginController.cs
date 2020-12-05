@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using ArticleApp.Models.Users;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +12,11 @@ namespace ArticleApp.Controllers
 {
     public class LoginController : Controller
     {
+        private readonly IUserRepository _userRepository;
+        public LoginController(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
         public IActionResult Index()
         {
             return View();
@@ -18,13 +24,15 @@ namespace ArticleApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(string email, string password)
         {
-            if ("admin@a.com".Equals(email) && "1234".Equals(password))
+            List<User> users = await _userRepository.GetAllUserAsync();
+            User user = users.Find(user => user.Email.Equals(email));
+            if (user != null && user.Password.Equals(password))
             {
                 // .NETNoteCookies
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Email, email),
-                    new Claim(ClaimTypes.Name, "Admin"),
+                    new Claim(ClaimTypes.Name, email),
 
                     new Claim(ClaimTypes.Role, "Admin")
                 };
