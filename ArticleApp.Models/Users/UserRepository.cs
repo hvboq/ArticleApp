@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ArticleApp.Models.Users
 {
-    class UserRepository : IUserRepository
+    public class UserRepository : IUserRepository
     {
         private readonly ArticleAppDBContext _context;
 

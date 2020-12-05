@@ -8,6 +8,7 @@ namespace ArticleApp.Models.Users
         /// <summary>
         /// 고유한 이메일
         /// </summary>
+        [Key]
         [Required(ErrorMessage = "이메일을 입력해주세요.")]
         public string Email { get; set; }
         /// <summary>

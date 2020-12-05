@@ -11,6 +11,7 @@ using ArticleApp.Data;
 using ArticleApp.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System;
+using ArticleApp.Models.Users;
 
 namespace ArticleApp
 {
@@ -60,6 +61,7 @@ namespace ArticleApp
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             // IArticleRepository.cs Inject: Di Container에 서비스(리포지토리) 등록
             services.AddTransient<IArticleRepository, ArticleRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

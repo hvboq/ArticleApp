@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ArticleApp.Models.Users
 {
-    interface IUserRepository
+    public interface IUserRepository
     {
         Task<User> AddUserAsync(User user); //유저 추가
         Task<List<User>> GetAllUserAsync(); //모든 유저 출력

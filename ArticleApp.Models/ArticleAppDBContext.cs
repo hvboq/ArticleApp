@@ -29,6 +29,7 @@ namespace ArticleApp.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Article>().Property(m => m.Created).HasDefaultValueSql("GetDate()");
+            modelBuilder.Entity<User>().Property(m => m.Created).HasDefaultValueSql("GetDate()");
         }
 
         public DbSet<Article> Articles { get; set; }
